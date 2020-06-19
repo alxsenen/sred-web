@@ -1,0 +1,7 @@
+PID=$(pidof 'node')
+if [[ -z "$PID" ]]
+then
+    nohup thelounge start 2>&1 &
+else
+    echo "Webchat ($PID) is running"
+fi
