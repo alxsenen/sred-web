@@ -79,8 +79,8 @@ module.exports = {
 	// which case the other two string settings are ignored.
 	https: {
 		enable: true,
-		key: "/etc/letsencrypt/live/webchat.segured.org/privkey.pem",
-		certificate: "/etc/letsencrypt/live/webchat.segured.org/cert.pem",
+		key: "~/sred-web/letsencrypt/live/webchat.segured.org/privkey.pem",
+		certificate: "~/sred-web/letsencrypt/live/webchat.segured.org/cert.pem",
 		//ca: "",
 	},
 
