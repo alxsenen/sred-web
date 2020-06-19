@@ -1,0 +1,34 @@
+server {
+	server_name confs.segured.org;
+		allow 162.158.126.0/8;
+		allow 192.99.43.5;
+		deny all;
+
+	location / {
+		auth_basic           "Admins Area";
+		auth_basic_user_file /etc/nginx/.htpasswd;
+		autoindex on;
+		root /var/www/html/irczone/deepzone;
+	}
+	
+	listen 443 ssl; # managed by Certbot
+	ssl_certificate /etc/letsencrypt/live/confs.segured.org/fullchain.pem; # managed by Certbot
+	ssl_certificate_key /etc/letsencrypt/live/confs.segured.org/privkey.pem; # managed by Certbot
+	include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+server {
+    if ($host = confs.segured.org) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	listen 80;
+
+	server_name confs.segured.org;
+    return 404; # managed by Certbot
+
+
+}
