@@ -33,7 +33,7 @@ module.exports = {
 	// Set the port to listen to.
 	//
 	// This value is set to `9000` by default.
-	port: 9000,
+	port: 9090,
 
 	// ### `bind`
 	//
@@ -226,16 +226,16 @@ module.exports = {
 	// }
 	// ```
 	defaults: {
-		name: "SeguRED",
+		name: "SRed",
 		host: "irc.segured.org",
 		port: 6697,
 		password: "",
 		tls: true,
 		rejectUnauthorized: true,
-		nick: ".",
+		nick: "Nick",
 		username: "webchat",
-		realname: "Webchat User",
-		join: "#lobby,#trivia",
+		realname: "Webchat SRed User",
+		join: "#lobby",
 	},
 
 	// ### `displayNetwork`
