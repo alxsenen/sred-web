@@ -7,7 +7,7 @@ server {
 		proxy_set_header X-Real-IP $remote_addr;
 		proxy_set_header x-forwarded-for $remote_addr;
 
-		proxy_pass http://localhost:3001;
+		proxy_pass http://ctbo01.segured.org:3001;
 		proxy_redirect default;
 
 	        # Websocket support (from version 1.4)
@@ -19,8 +19,8 @@ server {
 	location /ircops/ {
 		auth_basic           "Admins Area";
 		auth_basic_user_file /etc/nginx/.htpasswd;
-		proxy_redirect http://localhost:3001/ /opers_segured/;
-		proxy_pass http://localhost:3001;
+		proxy_redirect http://ctbo01.segured.org:3001/ /opers_segured/;
+		proxy_pass http://ctbo01.segured.org:3001;
 		proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header x-forwarded-for $remote_addr;
@@ -29,8 +29,8 @@ server {
 	location /opers/ {
 		auth_basic           "Admins Area";
 		auth_basic_user_file /etc/nginx/.htpasswd;
-		proxy_redirect http://localhost:3001/ /operators/;
-		proxy_pass http://localhost:3001;
+		proxy_redirect http://ctbo01.segured.org:3001/ /operators/;
+		proxy_pass http://ctbo01.segured.org:3001;
 		proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header x-forwarded-for $remote_addr;
@@ -39,8 +39,8 @@ server {
 	location /services/ {
 		auth_basic           "Admins Area";
 		auth_basic_user_file /etc/nginx/.htpasswd;
-		proxy_redirect http://localhost:3001/ /services/;
-		proxy_pass http://localhost:3001;
+		proxy_redirect http://ctbo01.segured.org:3001/ /services/;
+		proxy_pass http://ctbo01.segured.org:3001;
 		proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header x-forwarded-for $remote_addr;
@@ -49,8 +49,8 @@ server {
 	location /trivia/ {
 		auth_basic           "Admins Area";
 		auth_basic_user_file /etc/nginx/.htpasswd;
-		proxy_redirect http://localhost:3001/ /trivia/;
-		proxy_pass http://localhost:3001;
+		proxy_redirect http://ctbo01.segured.org:3001/ /trivia/;
+		proxy_pass http://ctbo01.segured.org:3001;
 		proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header x-forwarded-for $remote_addr;
