@@ -9,7 +9,7 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header x-forwarded-for $remote_addr;
 
-        proxy_pass https://localhost:9000;
+        proxy_pass https://167.86.117.106;
         proxy_redirect default;
 
         # Websocket support (from version 1.4)
