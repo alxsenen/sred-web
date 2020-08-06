@@ -49,7 +49,7 @@ module.exports = {
 	// and will honor the `X-Forwarded-For` header.
 	//
 	// This value is set to `false` by default.
-	reverseProxy: true,
+	reverseProxy: false,
 
 	// ### `maxHistory`
 	//
@@ -289,7 +289,7 @@ module.exports = {
 	// IPv4.
 	//
 	// This value is set to `false` by default.
-	useHexIp: true,
+	useHexIp: false,
 
 	// ## WEBIRC support
 	//
