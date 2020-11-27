@@ -1,31 +1,35 @@
 server {
-	root /var/www/html/ircd;
+	root /var/www/html/phpnav;
 
 	# Add index.php to the list if you are using PHP
 	index index.html index.htm index.nginx-debian.html index.php;
 
-	server_name ircd.segured.org;
+	server_name ftp.cropersviral.com;
 
 	#location / {
 		# First attempt to serve request as file, then
 		# as directory, then fall back to displaying a 404.
 	#	try_files $uri $uri/ =404;
 	#}
+	auth_basic           "Admins Area";
+        auth_basic_user_file /etc/nginx/.htpasswd;
 
      client_max_body_size 100M;
 proxy_connect_timeout 600; 
 proxy_send_timeout 600; 
 proxy_read_timeout 600; 
 send_timeout 600;
+    
     location / {
         try_files $uri $uri/ /index.php?$args;        
     }
 
     location ~ \.php$ {
-    include snippets/fastcgi-php.conf;
-    fastcgi_pass             unix:/var/run/php/php7.3-fpm.sock;
-    fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
+	include snippets/fastcgi-php.conf;
+	fastcgi_pass             unix:/var/run/php/php7.3-fpm.sock;
+	fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
+
 
 
 	# pass PHP scripts to FastCGI server
@@ -48,8 +52,8 @@ send_timeout 600;
 
 #    listen [::]:443 ssl ipv6only=on; # managed by Certbot
     listen 443 ssl http2; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/segured.org/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/segured.org/privkey.pem; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/cropersviral.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/cropersviral.com/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
@@ -76,7 +80,7 @@ send_timeout 600;
 #}
 
 server {
-    if ($host = ircd.segured.org) {
+    if ($host = ftp.cropersviral.com) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
@@ -84,7 +88,7 @@ server {
 #	listen 80 default_server;
 #	listen [::]:80 default_server;
 
-	server_name ircd.segured.org;
+	server_name ftp.cropersviral.com;
     return 404; # managed by Certbot
 
 

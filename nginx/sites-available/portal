@@ -4,7 +4,7 @@ server {
 	# Add index.php to the list if you are using PHP
 	index index.html index.htm index.nginx-debian.html;
 
-	server_name www.segured.org;
+	server_name www.segured.org segured.org;
 
 	location / {
 		# First attempt to serve request as file, then
@@ -33,8 +33,8 @@ server {
 
 
     listen 443 ssl http2; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/www.segured.org/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/www.segured.org/privkey.pem; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/segured.org/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/segured.org/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
@@ -61,15 +61,18 @@ server {
 #}
 
 server {
+    if ($host = segured.org) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
     if ($host = www.segured.org) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
-
-
-	server_name www.segured.org;
+    server_name www.segured.org segured.org;
     listen 80;
     return 404; # managed by Certbot
 
 
 }
+
